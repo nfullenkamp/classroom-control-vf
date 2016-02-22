@@ -45,6 +45,7 @@ node default {
   notify { "Yo! My name is ${::hostname}": }
   
 file { '/etc/motd':
+  noop => true,
   ensure => file,
   owner => 'root',
   group => 'root',
@@ -52,5 +53,9 @@ file { '/etc/motd':
   content => "Today I learned what it means to manage state using Puppet.\n",
 }
   
+exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  path => '/usr/bin:/usr/local/bin',
+  creates => '/etc/motd',
+}
   
 }
