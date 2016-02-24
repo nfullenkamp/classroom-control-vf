@@ -2,7 +2,7 @@ class nginx {
   File {
     owner => 'root',
     group => 'root',
-    mode => '0775',
+    mode => '0664',
   }
 
   package { 'nginx':
