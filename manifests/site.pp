@@ -50,12 +50,15 @@ node default {
   #  
   #
   # }
+  
+  # include users
+  # include skeleton
+  include nginx
+  
   $message = hiera('message')
   notify { $message: }
 }
   
-# include users
-# include skeleton
-include nginx
+
 
 
